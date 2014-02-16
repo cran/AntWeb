@@ -14,6 +14,7 @@
 #' @return data.frame
 #' @examples   
 #' data <- aw_data(genus = "acanthognathus", species = "brevicornis")
+#' data3 <- aw_data(genus = "acanthognathus", species = "brevicornis", georeferenced = TRUE)
 #' # data2 <- aw_data(scientific_name = "acanthognathus brevicornis")
 #' # data_genus_only <- aw_data(genus = "acanthognathus")
 #' # leaf_cutter_ants  <- aw_data(genus = "acromyrmex")
@@ -22,8 +23,8 @@ aw_data <- function(genus = NULL, species = NULL, scientific_name = NULL, georef
 
 
 	assert_that(!is.null(scientific_name) | !is.null(genus))
-	meta.decimal_latitude <- NA
-	meta.decimal_longitude <- NA
+	decimal_latitude <- NA
+	decimal_longitude <- NA
 	if(!is.null(scientific_name)) {
 		genus <- strsplit(scientific_name, " ")[[1]][1]
 		species <- strsplit(scientific_name, " ")[[1]][2]
@@ -42,12 +43,14 @@ aw_data <- function(genus = NULL, species = NULL, scientific_name = NULL, georef
 	df
 })
 	final_df <- data.frame(do.call(rbind.fill, data_df))
+	names(final_df)[grep("latitude", names(final_df))] <- "decimal_latitude"
+	names(final_df)[grep("longitude", names(final_df))] <- "decimal_longitude"
+
 	final_df$meta.other <- NULL
 	if(!georeferenced) {
 		final_df
 	} else {
-		# dplyr::filter(final_df, !is.na(meta.decimal_latitude), !is.na(meta.decimal_longitude))
-		subset(final_df, !is.na(meta.decimal_latitude) & !is.na(meta.decimal_longitude))
+		subset(final_df, !is.na(decimal_latitude) & !is.na(decimal_longitude))
 	}
 
 }

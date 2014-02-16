@@ -10,6 +10,14 @@ __Resources__
 
 ## Installing the package
 
+__Stable version__  
+
+```coffee
+install.packages("AntWeb", dependencies = TRUE)
+```
+
+__Development version__  
+
 ```coffee
 # If you don't already have the devtools package installed, run
 # install.packages("devtools")
@@ -37,7 +45,7 @@ install_github("ropensci/AntWeb")
 To cite package ‘AntWeb’ in publications use:
 
   'Karthik Ram' (2014). AntWeb: programmatic interface
-  to the AntWeb. R package version 0.1.
+  to the AntWeb. R package version 0.5.
   https://github.com/ropensci/AntWeb
 
 A BibTeX entry for LaTeX users is
@@ -46,7 +54,7 @@ A BibTeX entry for LaTeX users is
     title = {AntWeb: programmatic interface to the AntWeb},
     author = {'Karthik Ram'},
     year = {2014},
-    note = {R package version 0.4},
+    note = {R package version 0.5},
     url = {https://github.com/ropensci/AntWeb},
   }
 
