@@ -2,11 +2,13 @@
 \alias{aw_code}
 \title{aw_code}
 \usage{
-aw_code(code = NULL)
+aw_code(occurrenceid = NULL, catalogNumber = NULL)
 }
 \arguments{
-  \item{code}{A unique id in the AntWeb database
+  \item{occurrenceid}{A unique id in the AntWeb database
   identifying a particular specimen}
+
+  \item{catalogNumber}{Specimen catalogue number}
 }
 \value{
 list
@@ -15,7 +17,7 @@ list
 Retrieve data by specimen id
 }
 \examples{
-data_by_code <- aw_code(code = "casent0104669")
+# data_by_code <- aw_code(occurrenceid = "antweb:inb0003695883")
 }
 \seealso{
 \code{\link{aw_data}}
