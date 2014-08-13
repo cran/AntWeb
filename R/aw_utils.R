@@ -3,6 +3,10 @@ z_compact <- function(l) Filter(Negate(is.null), l)
 
 
 #' @noRd
+aw_base_url <- function() {
+    "http://www.antweb.org/api/v2/"
+}
+#' @noRd
 #' keyword Internal
 pretty_lists <- function(x)
 {
@@ -17,7 +21,7 @@ pretty_lists <- function(x)
 
 #' Print a summary for an antweb object
 #' @method print antweb
-#' @S3method print antweb
+#' @export
 #' @param x An object of class \code{antweb}
 #'   
 #' @param ... additional arguments
@@ -67,8 +71,9 @@ aw_cbind <- function(results) {
     }
 
 }
-
-
+# [TODO]
+# Should provide a way to combine results from aw_code()
+# need to remove the code before comparing, then concat all codes and add those back.
 
 
 #' @noRd

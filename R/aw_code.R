@@ -7,7 +7,9 @@
 #' @seealso \code{\link{aw_data}}
 #' @return list
 #' @examples 
-#' # data_by_code <- aw_code(occurrenceid = "antweb:inb0003695883") 
+#' # data_by_code <- aw_code(occurrenceid = "CAS:ANTWEB:alas188691") 
+#' # data_by_code <- aw_code(catalognumber="inb0003695883")
+
 aw_code <- function(occurrenceid = NULL, catalogNumber = NULL) {
 
 	# We need at least one identifier
@@ -17,7 +19,7 @@ aw_code <- function(occurrenceid = NULL, catalogNumber = NULL) {
 	base_url <- "http://www.antweb.org/api/v2"
 	args <- z_compact(as.list(c(occurrenceId = occurrenceid, catalogNumber = catalogNumber)))
 	results <- GET(base_url, query = args)
-	stop_for_status(results)
+	warn_for_status(results)
 	data <- fromJSON(content(results, "text"))
 	if(identical(data$specimens$empty_set, "No records found.")) {
 		NULL 
